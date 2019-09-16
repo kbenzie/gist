@@ -502,6 +502,7 @@ def main(argv=sys.argv[1:], config=None):
             logger.debug('action: - reading from stdin')
             filename = args.get("<filename>", "file1.txt")
             files.append(FileInfo(filename, sys.stdin.read()))
+            assert False, filename
 
         # Ensure that there are no empty files
         for file in files:

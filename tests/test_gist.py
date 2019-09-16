@@ -266,6 +266,15 @@ class TestGistCLI(unittest.TestCase):
         self.assertIn('test-content-\u212C', lines)
 
 
+class TestTempfile(unittest.TestCase):
+    def test(self):
+        with tempfile.NamedTemporaryFile("wb") as fp:
+            text = u"test-content-\u212C"
+            fp.write(text.encode('utf-8'))
+            fp.flush()
+
+            self.assertTrue(fp.name is not None)
+
 class TestGistGPG(unittest.TestCase):
     gnupghome = os.path.abspath('./tests/gnupg')
 
